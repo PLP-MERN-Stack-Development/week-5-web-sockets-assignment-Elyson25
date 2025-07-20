@@ -1,0 +1,56 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background-color: #f0f2f5;
+  color: #333;
+}
+
+.login-container { display: flex; justify-content: center; align-items: center; height: 100vh; }
+.login-container form { display: flex; flex-direction: column; padding: 40px; border-radius: 8px; background-color: white; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); width: 300px; }
+.login-container input { padding: 12px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 4px; font-size: 1rem; }
+.login-container button { padding: 12px; border: none; border-radius: 4px; background-color: #007bff; color: white; cursor: pointer; font-size: 1rem; transition: background-color 0.2s; }
+.login-container button:hover { background-color: #0056b3; }
+
+.chat-wrapper { display: flex; height: 100vh; }
+.sidebar { width: 260px; background-color: #3f0e40; color: #d1d2d3; padding: 20px; display: flex; flex-direction: column; }
+.sidebar h2 { font-size: 1.2rem; margin: 20px 0 10px 0; border-bottom: 1px solid #5a2e5c; padding-bottom: 10px; }
+.sidebar ul { list-style-type: none; padding: 0; margin: 0; }
+.sidebar li { padding: 10px 15px; border-radius: 5px; cursor: pointer; margin-bottom: 5px; transition: background-color 0.2s; display: flex; align-items: center; }
+.sidebar li:hover { background-color: #5a2e5c; }
+.sidebar li.active { background-color: #1164a3; color: white; font-weight: bold; }
+.online-dot { color: #32e432; margin-right: 8px; font-size: 0.8rem; }
+
+.chat-area { flex: 1; display: flex; flex-direction: column; background-color: #fff; }
+.chat-header { padding: 20px; border-bottom: 1px solid #eee; position: relative; }
+.chat-header h3 { margin: 0; }
+.chat-header small { color: #888; }
+
+.message-list { flex: 1; padding: 20px; overflow-y: auto; display: flex; flex-direction: column; }
+.message-item { display: flex; margin-bottom: 15px; }
+.message-content { max-width: 70%; padding: 10px 15px; border-radius: 18px; }
+.message-item.sent { justify-content: flex-end; }
+.message-item.sent .message-content { background-color: #007bff; color: white; border-bottom-right-radius: 4px; }
+.message-item.received { justify-content: flex-start; }
+.message-item.received .message-content { background-color: #f1f0f0; color: #333; border-bottom-left-radius: 4px; }
+.message-content strong { display: block; margin-bottom: 5px; color: #6d6de3; font-size: 0.9rem; }
+.message-item.sent .message-content strong { display: none; }
+.message-content p { margin: 0 0 5px 0; }
+.message-content span { font-size: 0.75rem; color: #a0a0a0; display: block; text-align: right; }
+.message-item.sent .message-content span { color: #e0e0e0; }
+.message-item.notification { align-self: center; background-color: #e9ecef; color: #6c757d; font-style: italic; padding: 5px 10px; border-radius: 12px; margin: 10px 0; font-size: 0.85rem; }
+
+.typing-indicator { height: 25px; padding: 0 20px; font-style: italic; color: #aaa; }
+.message-form { display: flex; padding: 20px; border-top: 1px solid #eee; background-color: #f7f7f7; }
+.message-form input { flex: 1; padding: 12px; border: 1px solid #ccc; border-radius: 8px; font-size: 1rem; }
+.message-form button { padding: 12px 20px; margin-left: 10px; border: none; border-radius: 8px; background-color: #007bff; color: white; cursor: pointer; font-size: 1rem; }
+.unread-badge { background-color: #dc3545; color: white; border-radius: 50%; padding: 2px 6px; font-size: 0.75rem; margin-left: auto; font-weight: bold; }
+
+.menu-toggle { display: none; }
+
+@media (max-width: 768px) {
+  .chat-wrapper { flex-direction: column; overflow: hidden; }
+  .sidebar { position: absolute; top: 0; left: 0; width: 85%; height: 100%; z-index: 10; transform: translateX(-100%); transition: transform 0.3s ease-in-out; box-shadow: 2px 0px 10px rgba(0,0,0,0.2); }
+  .sidebar.visible { transform: translateX(0); }
+  .chat-area { width: 100%; height: 100vh; }
+  .menu-toggle { display: block; position: absolute; top: 50%; left: 20px; transform: translateY(-50%); font-size: 1.8rem; cursor: pointer; background: none; border: none; color: #333; padding: 5px; z-index: 5; }
+}
